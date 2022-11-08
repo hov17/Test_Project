@@ -28,14 +28,15 @@ class BasePage():
     def is_url_address_correct(self, url):
         with allure.step('Check url address'):
             Logger.add_start_step(method='is_url_address_correct')
-            time.sleep(5)
-            assert self.browser.current_url == url, 'Wrong url address!'
+            time.sleep(3)
+            assert url in self.browser.current_url, 'Wrong url address!'
             Logger.add_end_step(self.browser.current_url, method='is_url_address_correct')
 
     # Метод переключения на другую вкладку
     def window_handles(self, number):
         with allure.step('Window handles'):
             Logger.add_start_step(method='window_handles')
+            time.sleep(3)
             new_window = self.browser.window_handles[number]
             self.browser.switch_to.window(new_window)
             Logger.add_end_step(self.browser.current_url, method='window_handles')
